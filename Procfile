@@ -1,0 +1,1 @@
+gunicorn <digital_sig>.wsgi --log-file -

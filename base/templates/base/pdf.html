@@ -1,0 +1,266 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>SLA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<style type="text/css">
+  body{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+</style>
+
+<body>
+  
+
+<div class="bg">
+  
+    <p id="borderimg" style="text-align:center; 
+    letter-spacing: 3px; line-height: 1.8; font-size: 20px; ">SERVICE LEVEL AGREEMENT</p>
+    <br>
+    <br>
+
+    <br>
+
+    <div class="table">
+<table  id="customers">
+  <tr>
+    <th>Document Owner</th>
+    <th style="  background-color: #d9d9d9" >{{SP.Company_SP_name}}</th>
+  </tr>
+ 
+{%for CL in Client_things%}
+
+{%for SP in Service_things%}
+
+
+    </div>
+
+</table>
+
+  <h2>Version</h2>
+
+      <table  id="customers">
+      <tr>
+        <th>Version</th>
+        <th>Hash no</th>
+        <th>date Signed by Service Provider</th>
+        <th>date Signed by client</th>
+      </tr>
+      <tr>
+        <td>{{SP.Room_nme}} - {{SP.id}}</td>
+        <td>{{SP.hashno}}</td>
+        <td>{{SP.date_signed_client}}</td>
+        <td>{{SP.date_signed_service}}</td>
+      </tr>
+    </table>
+
+
+    <h2 id="taketext">Agreement between </h2>
+    
+    <table  id="customers">
+      <tr>
+        <th>Service Provider</th>
+        <th>Client</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+
+    Category of service: storage of inform
+
+</div>
+
+  <h2>Contact Details</h2>
+
+      <table id="customers">
+      <tr>
+  
+        <th style="background-color: #e6ac00">Name</th>
+        <th style="background-color: #e6ac00">Phone</th>
+        <th style="background-color: #e6ac00">Email</th>
+      </tr>
+      <tr>
+        <td>{{CL.Client_Company_name}} </td>
+        <td>{{CL.Client_main_contact}}</td>
+        <td>{{CL.Client_tel_no}}</td>
+      </tr>
+        <tr>
+        <td>{{SP.Company_SP_name}} </td>
+        <td>{{SP.Company_SP_NO}}</td>
+        <td>{{SP.Company_SP_EMAIL}}</td>
+      </tr>
+    </table>
+
+
+
+
+
+<br>
+
+<h1>1. Agreement Overview</h1>
+
+<p>This Agreement represents a Service Level Agreement (“SLA” or “Agreement”) between
+{{CL.Client_Company_name}} and {{SP.Company_SP_name}}</p>
+
+<p>This Agreement remains valid until superseded by a revised agreement. This Agreement
+outlines the parameters of {{SP.Purpose_of_sla}} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  
+<h1>2. Goals & Objectives</h1>
+<P>The purpose of this Agreement is to ensure that the proper elements and commitments are in  {{SP.Goal_of_sla}} </P>
+
+
+<p>The goal of this Agreement is to obtain mutual agreement between the Service Provider(s) and Customer(s).</p>
+
+<p>The objectives of this Agreement are to:
+<ul>
+  <li>{{SP.Sla_objectives1}}</li>
+  <li>{{SP.Sla_objectives2}}</li>
+  <li>{{SP.Sla_objectives3}}</li>
+  <li>{{SP.Sla_objectives4}}</li>
+</ul>
+</p>
+
+
+</body>
+</html>
+
+<h1>3. Periodic Review</h1>
+
+<p>This Agreement is valid from the Effective Date outlined herein and is valid until further
+notice. This Agreement should be reviewed at a minimum once per fiscal year; however, in
+lieu of a review during any period specified, the current Agreement will remain in effect. </p>
+
+<p>The Business Relationship Manager (“Document Owner”) is responsible for facilitating
+regular reviews of this document. Contents of this document may be amended as required,
+provided mutual agreement is obtained from the primary stakeholders and communicated to
+all affected parties. The Document Owner will incorporate all subsequent revisions and obtain mutual agreements / approvals as required. </p>
+<ul>
+ <li> <strong>Business Relationship Manager</strong>:{{CL.Client_Company_name}}
+  </li>
+ <li> <strong>Start Date</strong>: {{CL.Sla_start_date}}</li>
+ <li> <strong>Next Review Date</strong>: {{SP.Next_Review_date}} </li>
+</ul>
+
+<h1>4. Service Agreement</h1>
+
+<p>The following detailed service parameters are the responsibility of the Service Provider in the
+ongoing support of this Agreement.</p>
+
+<dl>
+  <dt><strong> <h2>4.1 Service Scope</h2></strong></dt>
+  <dt>The following Services are covered by this Agreement</dt>
+  <br>
+
+  <dd>- {{SP.Service_Detailed_description1}}</dd>
+  <br>
+  <dd>- {{SP.Service_Detailed_description2}}</dd>
+   <br>
+  <dd>- {{SP.Service_Detailed_description3}}</dd>
+  <br>
+  <dd>- {{SP.Service_Detailed_description4}}</dd>
+
+  
+</dl>
+
+<dl>
+  <dt><h2>4.2 Client Requirements</h2></dt>
+  <dt>Client responsibilities and/or requirements in support of this Agreement include:</dt>
+  <br>
+
+  <dd>- {{CL.Customer_Requirement1}}</dd>
+  <br>
+  <dd>- {{CL.Customer_Requirement2}}</dd>
+   <br>
+  <dd>- {{CL.Customer_Requirement3}}</dd>
+</dl>
+
+<dl>
+<dt><strong> <h2>4.3 Service Provider Requirements</h2></strong></dt>
+  <dt>The service provide will supply {{SP.Service_to_supply}}</dt>
+  <dt>Service Provider responsibilities and/or requirements in support of this Agreement
+include:</dt>
+  <br>
+
+  <dd>- {{SP.Service_provider_requirement1}}</dd>
+  <br>
+  <dd>- {{SP.Service_provider_requirement2}}</dd>
+   <br>
+  <dd>- {{SP.Service_provider_requirement3}}</dd>
+  <br>
+  <dd>- {{SP.Service_provider_requirement4}}</dd>
+
+</dl>
+
+<dl>
+<dt><strong> <h2>4.4 Service Assumptions</h2></strong></dt>
+  <dt>Assumptions related to in-scope services and/or components include:</dt>
+  <br>
+
+  <dd>- Changes to services will be communicated and documented to all stakeholders.</dd>
+  
+</dl>
+
+<h1>5. Service Management</h1>
+<dl>
+  
+<p>Effective support of in-scope services is a result of maintaining consistent service levels. The
+following sections provide relevant details on service availability, monitoring of in-scope
+services and related components.</p>
+
+<dt><strong> <h2>5.1 Service Availability</h2></strong></dt>
+  <dt>Coverage parameters specific to the service(s) covered in this Agreement are as follows:</dt>
+  <br>
+  <dd>- Changes to services will be communicated and documented to all stakeholders.</dd>
+
+  <dd>{{SP.Service_performance_review}}</dd>
+  <dd>-{{SP.Perfomace_review_frequency}}</dd>
+  <dd>-{{CL.Client_performance_review}}</dd>
+  
+</dl>
+
+<dl>
+ 
+<dt><strong> <h2>5.2 Service Requests</h2></strong></dt>
+  <dt>In support of services outlined in this Agreement, the Service Provider will respond to
+service related incidents and/or requests submitted by the Client via reply email within
+the following time frames:</dt>
+  <br>
+  <dd>- Within Client_office_hours for issues classified as High priority..</dd>
+  <br>
+<dt>Remote assistance will be provided in-line with the above timescales dependent on the priority of the support request.</dt>
+  <br> 
+</dl>
+
+
+<h1>6.0 Agreement Approval</h1>
+
+<div class="row">
+  <div class="column" >
+    <img src="('/static/base/css/Picture1.jpg')">">
+  </div>
+  <div class="column" >
+    <p>This Document certifies that theses two parties signed a service level agreement with Digital Signatures issued by Reliable Tech a online platform which offers Digital Signatures </p>
+    <h3>Digital Signature Issued:</h3>
+    <h3> <a href="127.0.0.1:8000/">To Verify Legitamacy</a> </h3> 
+  </div>
+</div>
+
+{%endfor%}
+{%endfor%}
+
+</div>
+</body>
+</html>

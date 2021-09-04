@@ -1,0 +1,31 @@
+{%load bootstrap4 %}
+
+
+		<div class="container">
+		  <div class="row">
+		   
+		    		{% block header %}
+
+					<h2>Log in to your account.</h2>
+					{% endblock header %}
+
+					{% block content %}
+
+					<form method="post" action="{% url 'login:login' %}">
+					{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+					<button name="submit" class="btn btn-primary">log in</button>
+					{% endbuttons %}
+					<input type="hidden" name="next" value="{% url 'base:index' %}" />
+					</form>
+
+					{% endblock content %}
+		    </div>
+		    <div class="col-sm-2"></div>
+		  </div>
+		</div>
+
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}

@@ -1,0 +1,76 @@
+{% extends "base/base.html" %}{% block content %}
+{%load static%}
+{%load bootstrap4%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Assigned Rooms</title>
+    <style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<body>
+
+<div class="align-center">
+<h2>Welcome Back</h2>
+<p>The following is a table which contains Your Agreement Rooms which your are assigned for Agreements with Different Campanies </p>
+
+
+
+
+
+</div>
+
+
+</body>
+
+
+<br>
+<div class="container">  
+    <table class="table">
+    <thead class="thead-dark">
+           <tr>
+        <th scope="col">id</th>
+        <th scope="col">Room Name</th>
+        <th scope="col">Active</th>
+       
+        </tr>
+            </thead>
+
+{%for data in Ass_room%}
+ <tbody>
+        <td>{{data.id}}</td>
+        <td><a href="{% url 'client_side:agre' %}">{{data.Room_name}}</a></td>
+        <td>YES</td>
+{%endfor%}
+ </tbody>
+      </table>
+
+
+
+    <br> 
+  </div>
+
+
+  {% endblock content%}
+
+  </html>

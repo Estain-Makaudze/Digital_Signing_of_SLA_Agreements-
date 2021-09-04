@@ -1,0 +1,351 @@
+{% extends "base/base.html" %} {% block content %} 
+{%load static%}
+{%load bootstrap4%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signed Agrements</title>  
+
+</head>
+<style type="text/css">
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+
+.Client_side {
+  flex: 50%;
+  padding: 20px;
+   border-style: none dashed none none;
+}
+
+/* Main column */
+.Service_side {
+  flex: 50%;
+  padding: 20px;
+}
+
+.we_take{
+   text-align: center;
+ 
+}
+
+.i{
+                display: inline-block;
+                border-style: none none none double;
+                padding: 0px 20px 20px 10px;
+            }
+            
+            .head{
+                text-transform: uppercase;
+                text-decoration-style: solid;
+                text-decoration-line: underline;
+
+            }
+            h3{
+                text-align: center;
+                font-size:20px;
+            }
+            .buttoni{
+                             background-color: #4CAF50; /* Green */
+              border: none;
+              color: white;
+              padding: 10px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 18px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+
+  
+
+</style>
+<body>
+<br>
+  {%for data in messages%}
+
+  <div class="container">  
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+ {{data}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+  {%endfor%}
+    {%for dta in pontential3%}
+<h3>Do you agree to the following terms filled</h3>
+<div class="we_take">
+  
+
+<div style=" display: inline-block; padding: 0px 20px;">
+  
+  <form action="{% url 'base:done_or' room_nme=dta.Room_nme %}" method="get" accept-charset="utf-8">
+
+  
+  <button class="buttoni" type="submit">YES</button>
+  </form>
+</div>
+
+<div style="display: inline-block; padding: 0px 20px;" >
+  <form action="{% url 'base:dont_agre'  %}" method="get" accept-charset="utf-8">
+
+
+  <button class="buttoni"type="submit">NO</button>
+  </form>
+</div>
+</div>
+ <br>
+ <br>
+
+
+
+<div class="flex-container" >
+<div class="Client_side">
+
+{%for data in pontential2%}
+<h3>Details filled by {{data.Client_Company_name}}</h3>
+<div class="i">
+<p class=" head">Room Name</p>
+<p class=" ">{{data.Room_nme}}</p>
+</div>  
+
+<div class="i">
+<p class="head">Company Name</p>
+<p class="">{{data.Client_Company_name}}</p>
+</div>
+
+<div class="i">
+<p class="head">Tel No</p>
+<p class="">{{data.Client_tel_no}}</p>
+</div>
+
+<div class="i">
+<p class="head">Office Hours</p>
+<p class="">{{data.Client_office_hours}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head"> Agreement Start Date</p>
+<p class=""> {{data.Sla_start_date}} </p>
+</div>
+
+<div class="i">
+<p class="head">Agreement End Date</p>
+<p class=" ">{{data.Sla_end_date}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head">Performance Review</p>
+<p class="">{{data.Client_performance_review}}</p>
+</div>
+
+<br>
+<br>             
+
+<div class="i">
+<p class="head"> Customer_Requirement1</p>
+<p class="">{{data.Customer_Requirement1}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head"> Customer_Requirement2</p>
+<p class="">{{data.Customer_Requirement2}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head"> Customer_Requirement3</p>
+<p class="">{{data.Customer_Requirement3}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head"> Client_tel_no</p>
+<p class="">{{data.Client_tel_no}}</p>
+</div>
+
+<div class="i">
+<p class="head"> Client_service_office_no</p>
+<p class="">{{data.Client_service_office_no}}</p>
+</div>
+
+<br>
+<br>
+
+<div class="i">
+<p class="head">Performance Review</p>
+<p class="">{{data.Client_performance_review}}</p>
+</div>
+
+<br>
+<br>
+</div>
+
+
+{%endfor%}
+
+                                                                          <div class="Service_side">
+                                                                        
+                                                                          <h3>Details filled by {{dta.Company_SP_name}}</h3>
+                                                                          <div class="i">
+                                                                          <p class=" head">Room Name</p>
+                                                                          <p class=" ">{{dta.Room_nme}}</p>
+                                                                          </div>  
+
+                                                                          <div class="i">
+                                                                          <p class="head">Company_SP_name </p>
+                                                                          <p class="">{{dta.Company_SP_name}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Purpose_of_sla </p>
+                                                                          <p class="">{{dta.Purpose_of_sla}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Goal_of_sla </p>
+                                                                          <p class="">{{dta.Goal_of_sla}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Sla_objectives1 </p>
+                                                                          <p class=""> {{dta.Sla_objectives1}} </p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Sla_objectives2  </p>
+                                                                          <p class=" ">{{dta.Sla_objectives2}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Sla_objectives3 </p>
+                                                                          <p class="">{{dta.Sla_objectives3}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Sla_objectives4</p>
+                                                                          <p class="">{{dta.Sla_objectives4}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Service_performance_review</p>
+                                                                          <p class="">{{dta.Service_performance_review}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Perfomace_review_frequency</p>
+                                                                          <p class="">{{dta.Perfomace_review_frequency}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Next_Review_date</p>
+                                                                          <p class="">{{dta.Next_Review_date}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head"> Service_to_supply</p>
+                                                                          <p class="">{{dta.Service_to_supply}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_Detailed_description1 </p>
+                                                                          <p class="">{{dta.Service_Detailed_description1}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_Detailed_description2 </p>
+                                                                          <p class="">{{dta.Service_Detailed_description2}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_Detailed_description3 </p>
+                                                                          <p class="">{{dta.Service_Detailed_description3}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_Detailed_description4 </p>
+                                                                          <p class="">{{dta.Service_Detailed_description4}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_provider_requirement1 </p>
+                                                                          <p class="">{{dta.Service_provider_requirement1}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_provider_requirement2 </p>
+                                                                          <p class="">{{dta.Service_provider_requirement2}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_provider_requirement3 </p>
+                                                                          <p class="">{{dta.Service_provider_requirement3}}</p>
+                                                                          </div>
+
+                                                                          <div class="i">
+                                                                          <p class="head">Service_provider_requirement4 </p>
+                                                                          <p class="">{{dta.Service_provider_requirement4}}</p>
+                                                                          </div>
+
+                                                                          <br>
+                                                                          <br>
+                                                                      
+
+
+
+</div>
+</div>
+
+  {%endfor%}
+
+{% endblock content %}
+
+
+</body>
+</html>
+ 

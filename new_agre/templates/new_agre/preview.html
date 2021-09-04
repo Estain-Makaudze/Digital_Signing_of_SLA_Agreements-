@@ -1,0 +1,13 @@
+{%load static%}
+
+{%for pdf in Agreemnets_data%}
+<embed
+    src="{%static 'base/media/pdf' pdf=pdf %}"
+
+    type="application/pdf"
+    frameBorder="0"
+    scrolling="auto"
+    height="100%"
+    width="100%"
+></embed>
+{%endfor%}

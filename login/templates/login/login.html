@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link rel="stylesheet" href="{%  static 'base/css/login.css'%}">
+</head>
+
+<body>
+
+    <div id="wrapper">
+      <div id="left">
+        <div id="signin">
+          <div class="logo">
+            <h1>SLA'S SIGNATURES</h1>
+          </div>
+          <form method="POST" action="{% url 'login:login' %}">
+          {% csrf_token %}
+            <div>
+              <label>Username</label>
+              <input type="text" class="text-input" name="username"  />
+            </div>
+            <div>
+              <label>Password</label>
+              <input type="password" class="text-input" name="password" />
+            </div>
+            <button type="submit" class="primary-btn">Sign In</button>
+
+          </form>
+                   {%for message in messages%}
+                <p>{{message}}</p>
+              {%endfor%}
+          <div class="links">
+          </div>
+          <div class="or">
+            <hr class="bar" />
+            <span>OR</span>
+            <hr class="bar" />
+          </div>
+          <a href="{% url 'login:register' %}" class="secondary-btn">Create an account</a>
+        </div>
+        <footer id="main-footer">
+          <p>Copyright &copy; 2021, SLA HiT_200 All Rights Reserved</p>
+         
+        </footer>
+      </div>
+      <div id="right">
+        <div id="showcase">
+          <div class="showcase-content">
+            <h1>
+              AGREE, SIGN AND MONITOR YOUR SERVICE'S LEVEL AGREEMENTS IN A CONVENIENCE AND SECURE WAY
+            </h1>
+            <a href="#" class="secondary-btn">Welcome Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+

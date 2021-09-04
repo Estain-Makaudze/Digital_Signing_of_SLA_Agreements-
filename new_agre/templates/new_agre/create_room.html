@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}{% block content %}
+{%load static%}
+{%load bootstrap4%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign In Acc</title>
+   <style type="text/css">
+      .center{
+      padding: 30px 90px 90px 90px;
+      }
+    </style>
+
+</head>
+<body>
+<br>
+<h4 style="text-align: center;">Fill required details to create an Agreement room</h4>
+
+<div class="center">
+  
+
+  <form action="" method="POST"> 
+  {%csrf_token%}
+  {% bootstrap_form form %}
+
+  {%for data in messages%}
+  <h5>{{data}}</h5>
+  {%endfor%}
+  <input type="submit" value="Submit "name="submit" class="btn btn-success">  
+  
+</form>
+
+</div>
+
+
+{% endblock content%}
+</body>
+</html>
+ 

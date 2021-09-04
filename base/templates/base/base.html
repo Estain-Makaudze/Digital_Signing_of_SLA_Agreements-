@@ -1,0 +1,92 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+   <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'base/css/style.css'%}">
+		
+	<!--<link rel="stylesheet" href="{% static 'base/fonts/font-awesome.min.css'%}">-->
+		
+
+  </head>
+  <body>
+
+        <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar">
+        <div class="p-4 pt-5">
+          <a id="log" class="img logo rounded-circle mb-5"></a>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+              <a href="" data-toggle="collapse" aria-expanded="false">Your Details</a>
+            </li>
+            <li>
+                <a href="">Name : {{user.First_name}} {{user.Last_name}}</a>
+            </li>
+            <li>
+              <a href="" data-toggle="collapse" aria-expanded="false"> Username : {{user}}</a>
+            </li>
+            <li>
+              <a href="">Email : {{user.email}}</a>
+            </li>
+            <li>
+              <a href="">Address : {{address}}</a>
+            </li>
+          </ul>
+
+          <div class="footer">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script>SERVICE LEVEL AGREEMENT
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+
+        </div>
+      </nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                  {% if user.is_authenticated %}
+                    <a class="nav-link text-uppercase">{{user.email}}</a>
+                  {% endif %}
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login:logout' %}">LOG OUT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+       {% block content %}{% endblock content %}
+
+
+
+
+	
+	<script src="{%static 'base/js/jquery.min.js'%}"></script>
+    <script src="{%static 'base/js/popper.js'%}"></script>
+    <script src="{%static 'base/js/bootstrap.min.js'%}"></script>
+    <script src="{%static 'base/js/main.js'%}"></script>
+        
+    
+  </body>
+</html>

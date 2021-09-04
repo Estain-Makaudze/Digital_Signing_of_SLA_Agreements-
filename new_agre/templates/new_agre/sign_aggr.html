@@ -1,0 +1,122 @@
+{% extends "base/base.html" %} {% block content %} 
+{%load static%}
+{%load bootstrap4%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agrement Form</title>  
+  <link rel="stylesheet" href="{% static 'base/css/agrr_style.css'%}">
+  <style type="text/css" media="screen">
+  .but{
+     background-color: #e6b800; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+    
+  </style>
+  
+</head>
+<body>
+
+  {%for data in messages%}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+ You have Succefully Created Room : <strong>{{data}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+ {%endfor%}
+<div class="search-input">
+<h5>Search for users who are needed to participate the agreement <strong>{{data}}</strong></h5>
+
+<form method="POST" action="{% url 'new_agre:search_user' %}">
+          {% csrf_token %}
+
+  <input type="search" name="searched" placeholder="Input Username..">         
+  <button id="bt-sea" type="submit">Search</button>
+
+          </form>
+</div>
+
+<br>
+  <div class="container">  
+   
+
+
+    {%if searched%}
+
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+  Click A Username to Assign For an Aggrement
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Username</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email Address</th>
+        </tr>
+    </thead>
+    <tbody>
+           {%for user in user_searched %}
+        <tr>
+           <td>{{user.id}}</td>
+           <td><a href="{% url 'new_agre:assign_work' userid=user.id%}">{{user.username}}</a></td>
+           <td>{{user.first_name}}</td>
+           <td>{{user.last_name}}</td>
+           <td>{{user.email}}</td>
+         </tr>
+    
+    {%endfor%}
+      </tbody>
+      </table>
+
+    {%else%}
+    {%endif%} 
+  </div>
+<div>
+  <form action="{% url 'new_agre:admin_panel'%}" method="get" accept-charset="utf-8">
+<br>
+<br>
+    <h6>After Assigning Users for Agreement Click Next to access Your Admin Panel</h6>
+  <button class="but" type="submit">NEXT</button>
+  </form>
+</div>
+  
+{% endblock content %}
+
+
+ <!-- 
+<form method="post" action="{% url 'sign_aggr:assign_user' %}" name="assign_user">
+  <div>
+    <input type="radio" name="assign_user" >need to sign</input>
+    
+  </div>
+</form>
+
+
+<form method="post" action="{% url 'sign_aggr:assign_user' %}" name="assign_user">    
+  <div>
+    <input type="radio" name="assign_user">need to create a template</input>
+  </div>
+ <input type="submit">
+</form>  
+
+-->
+
+</body>
+</html>
+ 

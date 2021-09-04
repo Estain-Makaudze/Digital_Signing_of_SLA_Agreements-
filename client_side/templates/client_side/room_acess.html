@@ -1,0 +1,87 @@
+{% extends "base/base.html" %}{% block content %}
+{%load static%}
+{%load bootstrap4%}
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+input { 
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 5px grey;
+}
+
+.stan {
+
+  text-align: center;
+  
+}
+
+#but {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+#am_l{
+  text-align: center;
+
+
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="stan">
+  <br>
+<H4>Enter Required Details To Access Agreement Room </H4>
+<form action="{% url 'client_side:agre' %}" method="post">
+   {% csrf_token %}
+ 
+<br>
+
+  
+  <input placeholder="Agreement Room Name" type="text" id="room_name" name="room_name">
+  <br>
+  <br>
+
+  
+  <input placeholder="Password" type="password" id="password1" name="password1">
+  <br>
+  <br>
+  {%for message in messages%}
+  
+  <div id="am_l" 
+ class="alert alert-dark alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <br>
+
+{%endfor%}
+  <button id="but" type="Submit">Enter Room</button>
+  
+</form>
+
+               
+</div>
+</body>
+{% endblock content%}
+
+</html>

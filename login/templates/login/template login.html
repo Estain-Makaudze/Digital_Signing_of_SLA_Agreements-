@@ -1,0 +1,57 @@
+{%load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Login Page</title>
+	<link rel="stylesheet" href="{% static 'base/css/style1.css'%}">
+	<link rel="stylesheet" href="{% static 'base/bootstrap/css/bootstrap.min.css'%}">
+  	<!-- <script src="{% static 'basejquery/jquery.min.js"></script> -->
+  	<script src="{%static 'base/bootstrap/js/bootstrap.min.js'%}"></script>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+	<section>
+		<div class="imgBx">
+			<img src="{%static 'base/css/img2.jpg'%}" alt="login picture">
+			
+		</div>
+
+
+		<div class="contentBx">
+			<div class=formBx>
+				<h2>Login</h2>
+				<form method="post" action="{% url 'login:login' %}">
+				<div class="inputBx">
+				    
+					{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+					<button name="submit" class="btn btn-primary">log in</button>
+					{% endbuttons %}
+					<input type="hidden" name="next" value="{% url 'base:index' %}" />
+						  		
+				</div>  	
+				<!---
+				<div class="remember">
+					<label><input type="checkbox">Remember Me</label>
+				</div>
+
+				
+				<div class="inputBx">	
+					<p>Dont Have an Account? <a href="#">Sign Up</a> </p>				 
+				</div>  
+				--->
+
+				</form>  	
+			</div>
+		</div>
+
+	</section>
+
+
+</body>
+</html>

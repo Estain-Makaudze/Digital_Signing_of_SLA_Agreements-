@@ -1,0 +1,92 @@
+{% extends "base/base.html" %} {% block content %} 
+{%load static%}
+{%load bootstrap4%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signed Agrements</title>  
+  <link rel="stylesheet" href="{% static 'base/css/agrr_style.css'%}">
+  <style type="text/css" media="screen">
+  .buttoni{
+                             background-color: #4CAF50; /* Green */
+              border: none;
+              color: white;
+              padding: 10px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 18px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+    
+  </style>
+</head>
+<body>
+<br>
+  <div class="container">  
+
+<div class="search-input">
+  <p>Following are Agreement Rooms You have created. Concider following options</p>
+  <ul>
+  <li>Click <strong>Room Name</strong> to fill the contract Form and to access chat rom for negotions if it for the first time </li>
+  <li>Click <strong>Provide Signatures</strong> to digitaly Sign a filled Contract Form</li>
+  <li>Click <strong>Review</strong> to Acess Audit Trial which contains Contract form, date signed etc</li>
+  <li>Click <strong>Edit</strong> to Edit Signed Contract form</li>
+
+</ul> 
+</div>
+<div>
+
+  
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Room Name</th>
+        <th scope="col">Final Edits</th>
+        <th scope="col">Acesss Audit Trial</th>
+        <th scope="col">New Terms or Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+     {%for user in pontential%}
+                <td>{{user.id}}</td>
+           <td><a href="{% url 'chat:check_for_chat' room_nme=user.Room_name%}">{{user.Room_name}}</a></td>
+           <td><a href="{% url 'new_agre:finalise' room_id=user.id%}">Provide Signature</a></td>
+           <td><a href="{% url 'base:display_audit' room_name=user.Room_name%}">Review</a></td>
+            <td><a href="{% url 'chat:check_for_edit' room_nme=user.Room_name%}">Edit</a></td>
+         </tr>
+    {%endfor%}
+      </tbody>
+      </table>
+
+  
+  </div>
+
+
+  
+{% endblock content %}
+
+
+ <!-- 
+<form method="post" action="{% url 'sign_aggr:assign_user' %}" name="assign_user">
+  <div>
+    <input type="radio" name="assign_user" >need to sign</input>
+    
+  </div>
+</form>
+
+
+<form method="post" action="{% url 'sign_aggr:assign_user' %}" name="assign_user">    
+  <div>
+    <input type="radio" name="assign_user">need to create a template</input>
+  </div>
+ <input type="submit">
+</form>  
+
+-->
+
+</body>
+</html>
+ 

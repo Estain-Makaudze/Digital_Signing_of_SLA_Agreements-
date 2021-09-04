@@ -1,0 +1,41 @@
+{%load bootstrap4 %}
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Login Form</title>
+	<link rel="stylesheet" href="{% static 'base/css/style2.css'%}">
+</head>
+<body>
+	<div class="container">
+			<div class="form-container sign-up-container">
+		
+		    		{% block header %}
+
+					<h1>Log in to your account.</h1>
+					{% endblock header %}
+
+					{% block content %}
+
+					<form method="post" action="{% url 'login:login' %}">
+					{% csrf_token %}
+					{% bootstrap_form form %}
+					{% buttons %}
+					<button name="submit" class="btn btn-primary">log in</button>
+					{% endbuttons %}
+					<input type="hidden" name="next" value="{% url 'base:index' %}" />
+					</form>
+
+					{% endblock content %}
+		    </div>
+		</div>
+
+	{% bootstrap_css %}
+{% bootstrap_javascript %}
+</body>
+</html>
+
+		
+

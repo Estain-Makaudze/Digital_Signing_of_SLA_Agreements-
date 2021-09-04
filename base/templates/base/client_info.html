@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}{% block content %}
+{%load static%}
+{%load bootstrap4%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign In Acc</title>
+
+    <style type="text/css">
+      .center{
+      padding: 30px 90px 90px 90px;
+      }
+    </style>
+</head>
+<body>
+  <div class="center">
+    
+ 
+<h4 style="text-align: center;">Enter required details to register your more personal details</h4>
+  <form action="" method="POST">
+  {%csrf_token%}
+  {% bootstrap_form form %}
+  <input type="submit" value="Submit "name="submit" class="btn btn-success">  
+</form>
+ </div>
+{% endblock content%}
+</body>
+</html>
+ 

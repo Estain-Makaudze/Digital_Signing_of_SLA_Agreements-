@@ -1,0 +1,72 @@
+{% extends "base/audit_base.html" %}{% block content %}
+{%load static%}
+{%load bootstrap4%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign In Acc</title>
+
+
+</head>
+<body> 
+<center><h4>Agreement Audit Trial</h4></center>
+ 
+<div class="container">  
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Agreement_id</th>
+        <th scope="col">Contract form hash no</th>
+        <th scope="col">Contract Digital Signature ID</th>
+        <th scope="col">Digital Signature</th>
+        <th scope="col">Contract Form</th>
+        <th scope="col">Date Signed by Service Provider</th>
+        <th scope="col">Date Signed by Client</th>
+        <th scope="col">New Terms or Edit</th>
+  </tr>
+     </thead>
+  <tbody>
+         {%for things in Agreemnets_data%}
+ 
+    
+
+            <td>{{things.id}}</td>
+            <td>{{things.hash_no}}</td>
+            <td>{{things.Dig_sig}}</td>
+           <td> {{things.Contr_Dig_sig}}.....</td> 
+           <td><a href="{% url 'base:download' agree_id=things.id %}">{{things.Signed_pdf}}</a></td>
+            <td>{{things.date_Service_prov_sign}}</td>
+             <td>{{things.date_Client_sign}}</td>
+            <td><a href="{% url 'chat:check_for_edit' room_nme=things.Room_nme %}">Edit</a></td>
+ </tbody>
+  
+    
+        {%for things2 in Agreements_edits%}
+ <tbody>
+
+
+
+         
+            <td>{{things2.id}}</td>
+            <td>{{things2.hash_no}}</td>
+            <td>{{things2.Dig_sig}}</td>
+            <td>{{things2.Contr_Dig_sig}}|.....</td>
+            <td><a href="{% url 'base:download' agree_id=things.id %}">{{things2.Ex_Signed_pdf}}</a></td>
+            <td>{{things2.date_Service_prov_sign}}</td>
+             <td>{{things2.date_Client_sign}}</td>
+            <td>Edited Already</a></td>
+            
+         </tbody>
+   {%endfor%}
+  {%endfor%}
+     
+ 
+      </table>
+    <br> 
+  </div>
+{% endblock content%}
+</body>
+</html>
+ 
